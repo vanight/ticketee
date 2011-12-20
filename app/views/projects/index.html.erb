@@ -1,5 +1,12 @@
 <h1>Listing projects</h1>
 
+<h2>Projects</h2>
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= link_to project.name, project %></li>
+  <% end %>
+</ul>
+
 <table>
   <tr>
     <th>Name</th>
@@ -9,17 +16,31 @@
     <th></th>
   </tr>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.creater %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= project.creater %></td>
+      <td><%= link_to 'Show', project %></td>
+      <td><%= link_to 'Edit', edit_project_path(project) %></td>
+      <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+      <td>
+        <% project.tickets do |ticket| %>
+          <tr>
+            <td><%= ticket.id %></td>
+            <td><%= ticket.title %></td>
+            <td><%= ticket.description %></td>
+          </tr>
+        <% end %>
+      </td>
+    </tr>
+
+
+  <% end %>
 </table>
 
 <br />
-
+<%if @projects.empty? %>
+  <em>no projects</em>
+<%end %>
+<br />
 <%= link_to 'New Project', new_project_path %>

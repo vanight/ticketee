@@ -1,4 +1,7 @@
 Ticketee::Application.configure do
+
+  # An example of devise for development
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -27,4 +30,6 @@ Ticketee::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+
 end

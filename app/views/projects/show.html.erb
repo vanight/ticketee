@@ -1,6 +1,5 @@
 <% title(@project.name, "Projects") %>
 <p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @project.name %>
@@ -10,7 +9,19 @@
   <b>Creater:</b>
   <%= @project.creater %>
 </p>
+<p>
+  <b>Tickets</b>
 
+  <% @project.tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.title %></td>
+    <td><%= ticket.description %></td>
+    <td><%= ticket.project %></td>
+    <td><%= link_to 'Show', [@project,ticket] %></td>
+  </tr>
+  <% end %>
+</p>
 
+<%= link_to "New Ticket", new_project_ticket_path(@project) %>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

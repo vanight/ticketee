@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+  <p>
+    <b>Title:</b>
+    <%= @ticket.title %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%= @ticket.description %>
+  </p>
+  <p>
+    <b>Created by:</b>
+    <%= @ticket.user.email %>
+  </p>
+
+
+  <%= link_to 'Edit', edit_project_ticket_path(@project,@ticket) %>
+  <%= link_to 'Back', project_tickets_path %>

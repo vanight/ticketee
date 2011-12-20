@@ -58,7 +58,10 @@ input[type=file] {
   background: #85FF00;
   color: black;
 }
-
+.notice{
+  background: #85FF00;
+  color: black;
+}
 #alert {
   background: #FF3444;
 }
